@@ -1,1 +1,22 @@
 fiesta
+
+Minix-inspired operating system being developed in parallel with, and with
+native support for, https://github.com/gaerisen/riscv. Everything here was
+originally written in that repository under the 'osdev' branch, which is now
+abandoned. I'm migrating the project to its own repository for a number of very
+good reasons:
+
+1. I need a better way to test the RTL for the CPU that doesn't rely on the
+assumption that my code constitutes anything resembling full code coverage, so
+I'm forcing myself to learn how to write HDL unit tests and do actual good
+verification practice.
+
+2. Debugging an OS you're writing on hardware you developed is a NIGHTMARE; you
+never know whether each new bug is in SW or RTL, and I never even tried to get
+gdb running on the core, nor would I expect anyone else to.
+
+3. Really, the scope of each project is so different that it's a little silly
+that they were ever in the same place.
+
+The name 'fiesta' comes from the name 'refactored-fiesta', which is the
+automatically generated name that Github gave me when I created this repository.
