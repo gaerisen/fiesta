@@ -1,0 +1,138 @@
+[
+  {
+    "file": "core/start.S",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "core/start.S",
+      "-o",
+      "core/start.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "core/start.o"
+  },
+  {
+    "file": "core/sys.S",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "core/sys.S",
+      "-o",
+      "core/sys.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "core/sys.o"
+  },
+  {
+    "file": "core/main.c",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "core/main.c",
+      "-o",
+      "core/main.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "core/main.o"
+  },
+  {
+    "file": "core/tty.c",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "core/tty.c",
+      "-o",
+      "core/tty.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "core/tty.o"
+  },
+  {
+    "file": "core/proc.c",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "core/proc.c",
+      "-o",
+      "core/proc.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "core/proc.o"
+  },
+  {
+    "file": "core/util.c",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "core/util.c",
+      "-o",
+      "core/util.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "core/util.o"
+  },
+  {
+    "file": "bin/shell.c",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "bin/shell.c",
+      "-o",
+      "bin/shell.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "bin/shell.o"
+  },
+  {
+    "file": "bin/hi.c",
+    "arguments": [
+      "/home/garrison/.local/bin/riscv32-unknown-elf-gcc",
+      "-march=rv32izicsr",
+      "-mabi=ilp32",
+      "-ffreestanding",
+      "-O0",
+      "-I/home/garrison/fiesta/include",
+      "-c",
+      "bin/hi.c",
+      "-o",
+      "bin/hi.o"
+    ],
+    "directory": "/home/garrison/fiesta",
+    "output": "bin/hi.o"
+  }
+]

@@ -1,5 +1,4 @@
 #include "tty.h"
-#include "sys.h"
 #include "types.h"
 #include "proc.h"
 #include "bin/shell.h"
@@ -15,6 +14,7 @@ proc ptable[8];
 
 int main()
 {
+        while (1);
         u32 ktextsize = (u32)&_kernel_end;
         u32 kdatasize = (u32)(&_heap_start - 0x8000);
 

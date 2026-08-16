@@ -23,7 +23,6 @@ include $(MODULES)
 .PHONY: all clean cleaner $(SUBDIRS)
 
 all: flash.hex ram.hex
-	cp $^ ../obj_dir/
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
