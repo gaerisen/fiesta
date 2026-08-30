@@ -1,0 +1,57 @@
+
+Merging object attributes
+
+
+Discarded input sections
+
+ .riscv.attributes
+                0x0000000000000000       0x55 core/start.o
+ .comment       0x0000000000000000       0x1a core/main.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 core/main.o
+ .riscv.attributes
+                0x0000000000000000       0x57 core/main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+KERNEL           0x0000000080200000 0x0000000000100000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD core/start.o
+LOAD core/main.o
+
+.text           0x0000000080200000       0x4c
+ *(.text)
+ .text          0x0000000080200000       0x20 core/start.o
+                0x0000000080200000                _start
+ .text          0x0000000080200020       0x2c core/main.o
+                0x0000000080200020                main
+
+.rodata         0x0000000080200050       0x17
+ *(.rodata)
+ .rodata        0x0000000080200050       0x17 core/main.o
+
+.eh_frame       0x0000000080200068       0x3c
+ .eh_frame      0x0000000080200068       0x3c core/main.o
+                                         0x40 (size before relaxing)
+
+.data           0x00000000802000a4       0x1e
+ *(.data)
+ .data          0x00000000802000a4       0x1e core/start.o
+ .data          0x00000000802000c2        0x0 core/main.o
+
+.bss            0x00000000802000c2        0x0
+ *(.bss)
+ .bss           0x00000000802000c2        0x0 core/start.o
+ .bss           0x00000000802000c2        0x0 core/main.o
+
+/DISCARD/
+ *(.comment)
+ *(.debug*)
+ *(.note*)
+ *(.riscv.attributes)
+ *(.eh_frame_hdr)
+OUTPUT(kernel.elf elf64-littleriscv)

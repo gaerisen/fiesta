@@ -6,25 +6,24 @@
  * Copyright (c) Garrison Taylor
  **/
 
-.globl _start
-.section .text.kernel
+        .globl _start
+        .section .text
 
 _start:
-        li a7, 0x4442434e // DBCN extension
-        li a6, 0x0 // debug_console_write()
-        
-        la a2, msg_end
-        la a1, msg_start
-        sub a0, a2, a1
+        li a7, 0x4442434e
+        li a6, 0x0
+        li a0, 12
+        lla a1, msg_start
+        li a2, 0
 
         ecall
-        nop
 
-loop:
-        j loop
+        call main
 
-.section .data.kernel
+halt:
+        j halt
+
+        .section .data
 
 msg_start:
-.asciz "Hello, World!\n"
-msg_end:
+        .asciz "\n[ OK ] Reached kernel start\n"

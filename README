@@ -20,3 +20,9 @@ that they were ever in the same place.
 
 The name 'fiesta' comes from the name 'refactored-fiesta', which is the
 automatically generated name that Github gave me when I created this repository.
+
+
+To run QEMU simulation:
+
+$ make
+$ ./sim

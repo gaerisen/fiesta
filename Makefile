@@ -1,18 +1,19 @@
 ROOT = $(shell pwd)
 INCDIR = $(ROOT)/include
+LIBDIR = $(ROOT)/lib
 
-PREFIX = riscv32-unknown-elf-
+CC = $(CROSS_COMPILE)gcc
+OBJCOPY = $(CROSS_COMPILE)objcopy
+OBJDUMP = $(CROSS_COMPILE)objdump
 
-CC = $(PREFIX)gcc
-OBJCOPY = $(PREFIX)objcopy
-OBJDUMP = $(PREFIX)objdump
-
-LDSCRIPT = main.ld
-CFLAGS = -march=rv32izicsr -mabi=ilp32 -ffreestanding -O0 -I$(INCDIR)
+LDSCRIPT = link.ld
+CFLAGS = -march=rv64imaczicsr -mabi=lp64 -O0 -I$(INCDIR)
+CFLAGS += -ffreestanding -fpic -mcmodel=medlow
 ASFLAGS = $(CFLAGS)
-LDFLAGS = -T $(LDSCRIPT) -nostdlib -nostartfiles -static
+LDFLAGS = $(CFLAGS) -T $(LDSCRIPT) -nostdlib -nostartfiles -static
+LDFLAGS += -L$(LIBDIR) -lsbi
 
-TARGET = boot
+TARGET = kernel
 
 MODULES = $(shell find . -name Config.mk)
 
@@ -22,7 +23,7 @@ include $(MODULES)
 
 .PHONY: all clean cleaner $(SUBDIRS)
 
-all: flash.hex ram.hex
+all: $(TARGET).elf
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
@@ -33,20 +34,20 @@ all: flash.hex ram.hex
 $(TARGET).elf: $(OBJ)
 	$(CC) $(LDFLAGS) $^ -o $@
 
-$(TARGET).bin: $(TARGET).elf
-	$(OBJCOPY) -O binary $^ $@
+# $(TARGET).bin: $(TARGET).elf
+#	$(OBJCOPY) -O binary $^ $@
 
-$(TARGET).hex: $(TARGET).bin
-	od -An -vtx1 $^ > $@
+# $(TARGET).hex: $(TARGET).bin
+#	od -An -vtx1 $^ > $@
 
-flash.hex: $(TARGET).hex
-	head -n 2048 $^ > $@
+# flash.hex: $(TARGET).hex
+#	head -n 2048 $^ > $@
 
-ram.hex: $(TARGET).hex
-	tail -n +2049 $^ > $@
+# ram.hex: $(TARGET).hex
+#	tail -n +2049 $^ > $@
 
 dump:
 	$(OBJDUMP) -D $(TARGET).elf
 
 clean:
-	rm *.elf *.bin *.hex $(OBJ)
+	rm *.elf $(OBJ)
